@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -22,8 +23,11 @@
 
         // ページ読み込み時に日数を計算して表示
         window.onload = function () {
-            const currentDate = new Date();
-            const daysUntilExam = Math.ceil((examDate - currentDate) / (1000 * 60 * 60 * 24));
+				const currentDate = new Date();
+				const examDateUTC = Date.UTC(examDate.getUTCFullYear(), examDate.getUTCMonth(), examDate.getUTCDate());
+				const currentDateUTC = Date.UTC(currentDate.getUTCFullYear(), currentDate.getUTCMonth(), currentDate.getUTCDate());
+				const daysUntilExam = Math.ceil((examDateUTC - currentDateUTC) / (1000 * 60 * 60 * 24));
+
 
             // HTML要素に日数を表示
             const daysUntilExamElement = document.getElementById('daysUntilExam');
